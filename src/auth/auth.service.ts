@@ -30,6 +30,10 @@ export class AuthService {
         return { token };
     }
 
+    async findByEmail(email: string): Promise<User> {
+        return this.userModel.findOne({ email }).exec();
+    }
+
     async login(loginDto: LoginDto): Promise<{ token: string }> {
         const { email, password } = loginDto
 
